@@ -5,65 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>DECADE GOLF PRO</title>
     
-    <!-- 1. ブラウザのタブ用アイコン (SVG) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Ccircle cx='256' cy='256' r='240' fill='%230F172A' stroke='%2310B981' stroke-width='20'/%3E%3Ccircle cx='256' cy='256' r='160' fill='none' stroke='%2310B981' stroke-width='10' stroke-dasharray='30' opacity='0.5'/%3E%3Cpath d='M240 120 v280 M240 120 l80 40 l-80 40' fill='%23EF4444' stroke='%23F8FAFC' stroke-width='12' stroke-linejoin='round'/%3E%3Ccircle cx='256' cy='380' r='15' fill='%23F8FAFC'/%3E%3C/svg%3E">
+    <!-- 1. ブラウザのタブ用アイコン -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Ccircle cx='256' cy='256' r='240' fill='%230F172A' stroke='%2310B981' stroke-width='20'/%3E%3Cpath d='M230 100 v312 M230 100 l120 60 l-120 60' fill='%23EF4444' stroke='white' stroke-width='10'/%3E%3C/svg%3E">
 
-    <!-- 2. iOS/スマホ ホーム画面用アイコン -->
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='100' fill='%230F172A'/%3E%3Ccircle cx='256' cy='256' r='200' fill='none' stroke='%2310B981' stroke-width='20' stroke-dasharray='40' opacity='0.3'/%3E%3Cpath d='M230 100 v312 M230 100 l120 60 l-120 60' fill='%23EF4444' stroke='%23F8FAFC' stroke-width='15' stroke-linejoin='round'/%3E%3Ccircle cx='256' cy='380' r='20' fill='%23F8FAFC'/%3E%3C/svg%3E">
+    <!-- 2. スマホのホーム画面用アイコン (iOS) -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='100' fill='%230F172A'/%3E%3Ccircle cx='256' cy='256' r='200' fill='none' stroke='%2310B981' stroke-width='20' opacity='0.3'/%3E%3Cpath d='M230 100 v312 M230 100 l120 60 l-120 60' fill='%23EF4444' stroke='white' stroke-width='15'/%3E%3C/svg%3E">
 
-    <!-- 3. PWAマニフェスト (タスクバー・Androidホーム画面用) -->
-    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkRFQ0FERSBHT0xGIFBSTyIsCiAgInNob3J0X25hbWUiIjogIkRFQ0FERVBybyIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMEYxNzJBIiwKICAidGhlbWVfY29sb3IiIjogIiMwRjE3MkEiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWwsJTNcontextdmclMjB4bWxucz0nd3d3LnczLm9yZy8yMDAwL3N2Zyc2MHZpZXdCb3g9JzAgMCA1MTIgNTEyJyUzRSUzQ3JlY3QlMjB3aWR0aD0nNTEyJTIwaGVpZ2h0PSc1MTInJTIwcng9JzEwMCclMjBmaWxsPSclMjMwRjE3MkEnLzUzRSUzQ3BhdGglMjBkPSdNMjMwJTIwMTAwJTIwdjMxMiUyME0yMzAlMjAxMDAlMjBsMTIwJTIwNjAlMjBsLTEyMCUyMDYwJyUyMGZpbGw9JyUyM0VGNDQ0NCclMjBzdHJva2U9JyUyM0Y4RkFGQyclMjBzdHJva2Utd2lkdGg9JzE1JyUyMHN0cm9rZS1saW5lam9pbj0ncm91bmQnLzUzRSUzQ2NpcmNsZSUyMGN4PScyNTYnJTIwY3k9JzM4MCclMjByPScyMCclMjBmaWxsPSclMjNGOEZBRkMnLzUzRSUzQy9zdmclM0UiLAogICAgICAic2l6ZXMiIjogIjUxMng1MTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInB1cnBvc2UiOiAiYW55IG1hc2thYmxlIgogICAgfQogIF0KfQ==">
+    <!-- 3. PWAマニフェスト (Android/Chrome用) -->
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkRFQ0FERSBHT0xGIFBSTyIsCiAgInNob3J0X25hbWUiIjogIkRFQ0FERVBybyIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMEYxNzJBIiwKICAidGhlbWVfY29sb3IiIjogIiMwRjE3MkEiLAogICJpY29ucyI6IFt7CiAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbCw0N0Noek93dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA1MTIgNTEyJz48cmVjdCB3aWR0aD0nNTEyJyBoZWlnaHQ9JzUxMicgcng9JzEwMCcgZmlsbD0nIzBGMTcyQScvPjxwYXRoIGQ9J00yMzAgMTAwIHYzMTIgTTIzMCAxMDBsMTIwIDYwIGwtMTIwIDYwJyBmaWxsPScjRUY0NDQ0JyBzdHJva2U9J3doaXRlJyBzdHJva2Utd2lkdGg9JzE1Jy8+PC9zdmc+IiwKICAgICJzaXplcyI6ICI1MTJ4NTEyIiwKICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgfV0KfQ==">
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-    <!-- UI Styles -->
+    <!-- UI Styling (Tailwind) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         [v-cloak] { display: none !important; }
-        body { -webkit-tap-highlight-color: transparent; background-color: #0F172A; color: #F8FAFC; user-select: none; }
+        body { -webkit-tap-highlight-color: transparent; background-color: #0F172A; color: #F8FAFC; overflow-x: hidden; }
         
-        /* タブの文字を大きく・太く */
-        .tab-btn { flex: 1; text-align: center; font-size: 16px; font-weight: 900; letter-spacing: 0.05em; color: #94A3B8; border-bottom: 4px solid transparent; transition: all 0.3s; }
-        .tab-active { border-bottom: 4px solid #10B981; color: #10B981; background: rgba(16, 185, 129, 0.1); }
+        /* ナビゲーションタブの文字を大きく */
+        .tab-btn { flex: 1; text-align: center; font-size: 18px; font-weight: 900; letter-spacing: 0.05em; color: #94A3B8; border-bottom: 5px solid transparent; transition: all 0.3s; }
+        .tab-active { border-bottom: 5px solid #10B981; color: #10B981; background: rgba(16, 185, 129, 0.1); }
         
-        /* グリーン描画 */
-        .green-base { background: #064E3B; border-radius: 45% 45% 48% 48%; position: relative; border: 3px solid #065F46; box-shadow: inset 0 0 20px rgba(0,0,0,0.6); }
-        .pin-marker { position: absolute; width: 14px; height: 14px; background: #EF4444; border: 2.5px solid white; border-radius: 50%; transform: translate(-50%, 50%); z-index: 20; box-shadow: 0 0 10px rgba(239,68,68,1); }
+        /* グリーン視覚表示 */
+        .green-base { background: #064E3B; border-radius: 45% 45% 48% 48%; position: relative; border: 3px solid #065F46; box-shadow: inset 0 0 25px rgba(0,0,0,0.7); }
+        .pin-marker { position: absolute; width: 14px; height: 14px; background: #EF4444; border: 2.5px solid white; border-radius: 50%; transform: translate(-50%, 50%); z-index: 20; box-shadow: 0 0 12px rgba(239,68,68,1); }
         
-        input, select { background-color: #1E293B !important; border: 1px solid #334155 !important; color: white !important; font-size: 16px !important; border-radius: 8px !important; padding: 12px !important; width: 100%; }
-        label { font-size: 11px; color: #94A3B8; font-weight: bold; text-transform: uppercase; margin-bottom: 4px; display: block; }
+        /* フォーム入力 */
+        input, select { background-color: #1E293B !important; border: 1px solid #475569 !important; color: white !important; font-size: 16px !important; border-radius: 10px !important; padding: 12px !important; width: 100%; }
+        label { font-size: 12px; color: #CBD5E1; font-weight: 900; text-transform: uppercase; margin-bottom: 4px; display: block; }
         
-        .toggle-btn { flex: 1; text-align: center; padding: 12px 0; font-size: 15px; font-weight: 900; background: #1E293B; border: 1px solid #334155; }
-        .toggle-btn.active { background: #10B981; color: #0F172A; border-color: #10B981; }
-        
-        .light-status-green { background: rgba(16, 185, 129, 0.25); color: #34D399; border: 1px solid #10B981; }
-        .light-status-yellow { background: rgba(245, 158, 11, 0.25); color: #FBBF24; border: 1px solid #F59E0B; }
-        .light-status-red { background: rgba(239, 68, 68, 0.25); color: #F87171; border: 1px solid #EF4444; }
+        /* TIGER 5 項目 */
+        .tiger-card { background-color: #1E293B; border: 1px solid #334155; padding: 24px; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .tiger-label { font-size: 17px; font-weight: 900; color: #F1F5F9; text-transform: uppercase; }
+        .tiger-value { font-size: 42px; font-weight: 900; font-style: italic; line-height: 1; }
 
-        /* TIGER 5 項目名 */
-        .tiger-label { font-size: 15px; font-weight: 900; color: #E2E8F0; text-transform: uppercase; letter-spacing: -0.02em; }
+        .toggle-btn { flex: 1; text-align: center; padding: 12px 0; font-size: 16px; font-weight: 900; background: #1E293B; border: 1px solid #334155; }
+        .toggle-btn.active { background: #10B981; color: #0F172A; border-color: #10B981; }
+
+        .light-status-green { background: rgba(16, 185, 129, 0.3); color: #34D399; border: 2px solid #10B981; }
+        .light-status-yellow { background: rgba(245, 158, 11, 0.3); color: #FBBF24; border: 2px solid #F59E0B; }
+        .light-status-red { background: rgba(239, 68, 68, 0.3); color: #F87171; border: 2px solid #EF4444; }
     </style>
 </head>
 <body>
 
-    <div id="app" v-cloak class="max-w-md mx-auto flex flex-col min-h-screen">
+    <div id="app" v-cloak class="max-w-md mx-auto flex flex-col min-h-screen relative">
         
-        <!-- Header -->
+        <!-- HEADER -->
         <header class="p-4 bg-slate-800 border-b border-slate-700 flex justify-between items-center sticky top-0 z-50">
             <div class="flex items-center gap-2">
-                <!-- アプリ内ロゴ(SVG) -->
-                <svg width="24" height="24" viewBox="0 0 512 512" fill="none">
-                    <circle cx="256" cy="256" r="240" fill="#10B981"/>
-                    <path d="M230 100 v312 M230 100 l120 60 l-120 60" fill="#EF4444" stroke="white" stroke-width="15" stroke-linejoin="round"/>
-                </svg>
+                <svg width="24" height="24" viewBox="0 0 512 512"><circle cx="256" cy="256" r="240" fill="#10B981"/><path d="M230 100 v312 M230 100 l120 60 l-120 60" fill="#EF4444" stroke="white" stroke-width="15" stroke-linejoin="round"/></svg>
                 <h1 class="text-xl font-black text-emerald-500 italic tracking-tighter">DECADE GOLF</h1>
             </div>
-            <button @click="resetRound" class="text-[10px] bg-slate-700 px-3 py-1.5 rounded-full font-black uppercase text-gray-300">Clear Data</button>
+            <button @click="resetRound" class="text-[10px] bg-slate-700 px-3 py-1.5 rounded-full font-black uppercase text-gray-400">RESET</button>
         </header>
 
-        <!-- Navigation (常時表示・大きく太く) -->
-        <nav class="flex bg-slate-800 border-b border-slate-700 shadow-xl sticky top-[61px] z-40">
+        <!-- NAVIGATION (常時表示・大きく) -->
+        <nav class="flex bg-slate-800 border-b border-slate-700 shadow-2xl sticky top-[61px] z-40">
             <button @click="currentTab = 'play'" :class="{'tab-active': currentTab === 'play'}" class="tab-btn py-5">PLAY</button>
             <button @click="currentTab = 'stats'" :class="{'tab-active': currentTab === 'stats'}" class="tab-btn py-5">TIGER 5</button>
             <button @click="currentTab = 'settings'" :class="{'tab-active': currentTab === 'settings'}" class="tab-btn py-5">COURSE</button>
@@ -71,105 +70,89 @@
 
         <main class="flex-1 p-4 pb-12 overflow-y-auto">
             
-            <!-- 1. PLAY TAB -->
-            <div v-show="currentTab === 'play'" class="space-y-6">
-                <div class="bg-slate-800 rounded-[2rem] p-6 border border-slate-700 shadow-2xl">
+            <!-- PLAY TAB -->
+            <div v-show="currentTab === 'play'" class="space-y-6 animate-in fade-in">
+                <div class="bg-slate-800 rounded-[2.5rem] p-6 border border-slate-700 shadow-2xl">
                     <div class="flex justify-between items-center mb-8">
-                        <button @click="prevHole" :disabled="currentHoleIdx === 0" class="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center disabled:opacity-5 font-black">◀</button>
+                        <button @click="prevHole" :disabled="currentHoleIdx === 0" class="w-14 h-14 bg-slate-700 rounded-full flex items-center justify-center disabled:opacity-5 text-xl">◀</button>
                         <div class="text-center">
-                            <span class="text-[10px] font-black text-slate-500 uppercase tracking-[.3em]">Hole {{ currentHoleIdx + 1 }}</span>
-                            <h2 class="text-4xl font-black italic tracking-tighter">Par {{ activeHole.par }}</h2>
+                            <span class="text-[10px] font-black text-slate-500 uppercase tracking-[.4em]">Hole {{ currentHoleIdx + 1 }}</span>
+                            <h2 class="text-5xl font-black italic tracking-tighter">Par {{ activeHole.par }}</h2>
                         </div>
-                        <button @click="nextHole" :disabled="currentHoleIdx === 17" class="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center disabled:opacity-5 font-black">▶</button>
+                        <button @click="nextHole" :disabled="currentHoleIdx === 17" class="w-14 h-14 bg-slate-700 rounded-full flex items-center justify-center disabled:opacity-5 text-xl">▶</button>
                     </div>
 
+                    <!-- Green Visual -->
                     <div class="flex flex-col items-center mb-8">
                         <div class="green-base w-48 h-56 shadow-2xl border-4 border-emerald-950">
-                            <div class="absolute top-1/2 left-1/2 w-4 h-4 border border-emerald-400/20 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
                             <div class="pin-marker" :style="pinVisualPosition"></div>
-                            <div class="absolute bottom-2 w-full text-center text-[9px] font-black text-emerald-300/20 uppercase tracking-widest">Front Edge</div>
+                            <div class="absolute bottom-2 w-full text-center text-[9px] font-black text-emerald-300/30 uppercase tracking-widest">Front Edge</div>
                         </div>
                     </div>
 
+                    <!-- Strategic Advice -->
                     <div class="space-y-4">
-                        <div class="p-4 rounded-2xl font-black text-xs flex justify-between items-center shadow-lg" :class="lightStatusClass">
-                            <span class="text-sm">{{ lightStatusText }}</span>
-                            <span class="bg-black/20 px-3 py-1 rounded-lg">{{ activeHole.pinSide }}{{ activeHole.pinSideDist }} / F{{ activeHole.pinFront }}</span>
+                        <div class="p-4 rounded-2xl font-black text-sm flex justify-between items-center" :class="lightStatusClass">
+                            <span>{{ lightStatusText }}</span>
+                            <span class="bg-black/20 px-3 py-1 rounded-lg text-xs">{{ activeHole.pinSide }}{{ activeHole.pinSideDist }} / F{{ activeHole.pinFront }}</span>
                         </div>
-                        <div class="bg-slate-950 p-5 rounded-2xl border-l-8 border-emerald-500 text-[14px] leading-relaxed shadow-xl text-slate-200">
-                            <span class="text-emerald-500 font-black uppercase block mb-1 text-[11px]">Caddy Strategy:</span>
+                        <div class="bg-slate-950 p-5 rounded-3xl border-l-8 border-emerald-500 text-[15px] leading-relaxed shadow-xl text-slate-200">
                             {{ strategyAdvice }}
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-slate-800 rounded-[2rem] p-6 border border-slate-700 shadow-xl space-y-6">
+                <!-- Input Zone -->
+                <div class="bg-slate-800 rounded-[2.5rem] p-6 border border-slate-700 shadow-xl space-y-6">
                     <div class="bg-slate-900 p-5 rounded-2xl border border-slate-700">
                         <label class="text-emerald-500">アプローチ残り距離 (y)</label>
-                        <div class="flex items-center gap-4 mt-1">
-                            <input type="number" v-model.number="activeHole.approachDistance" class="flex-1 text-4xl font-black text-center border-none">
-                            <span v-if="activeHole.approachDistance <= 150" class="text-[10px] bg-emerald-500 text-slate-950 px-2 py-1 rounded-md font-black">TARGET 150</span>
-                        </div>
+                        <input type="number" v-model.number="activeHole.approachDistance" class="text-4xl font-black text-center border-none mt-2">
                     </div>
 
                     <div class="grid grid-cols-2 gap-4">
                         <div class="bg-slate-900 p-4 rounded-2xl border border-slate-700 text-center">
                             <label>SCORE</label>
-                            <div class="flex items-center justify-around mt-2">
-                                <button @click="activeHole.score--" class="w-10 h-10 bg-slate-700 rounded-full font-black text-xl">－</button>
-                                <span class="text-3xl font-black italic">{{ activeHole.score || activeHole.par }}</span>
-                                <button @click="activeHole.score++" class="w-10 h-10 bg-slate-700 rounded-full font-black text-xl">＋</button>
+                            <div class="flex items-center justify-around mt-3">
+                                <button @click="activeHole.score--" class="w-12 h-12 bg-slate-700 rounded-full font-black text-2xl">－</button>
+                                <span class="text-4xl font-black italic">{{ activeHole.score || activeHole.par }}</span>
+                                <button @click="activeHole.score++" class="w-12 h-12 bg-slate-700 rounded-full font-black text-2xl">＋</button>
                             </div>
                         </div>
-                        <div class="bg-slate-900 p-4 rounded-2xl border border-slate-700 text-center">
+                        <div class="bg-slate-900 p-4 rounded-2xl border border-slate-700 text-center text-orange-400">
                             <label class="text-orange-400">PUTTS</label>
-                            <div class="flex items-center justify-around mt-2 text-orange-400">
-                                <button @click="activeHole.putts--" class="w-10 h-10 bg-slate-700 rounded-full font-black text-xl">－</button>
-                                <span class="text-3xl font-black italic">{{ activeHole.putts }}</span>
-                                <button @click="activeHole.putts++" class="w-10 h-10 bg-slate-700 rounded-full font-black text-xl">＋</button>
+                            <div class="flex items-center justify-around mt-3">
+                                <button @click="activeHole.putts--" class="w-12 h-12 bg-slate-700 rounded-full font-black text-2xl">－</button>
+                                <span class="text-4xl font-black italic">{{ activeHole.putts }}</span>
+                                <button @click="activeHole.putts++" class="w-12 h-12 bg-slate-700 rounded-full font-black text-2xl">＋</button>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="bg-slate-900 p-4 rounded-2xl border border-slate-700 flex justify-between items-center px-6">
-                        <label class="text-blue-400 m-0">CHIPS</label>
-                        <div class="flex items-center gap-8">
-                            <button @click="activeHole.chips--" class="w-10 h-10 bg-slate-700 rounded-full font-black text-blue-400 text-xl">－</button>
-                            <span class="text-2xl font-black text-blue-400">{{ activeHole.chips }}</span>
-                            <button @click="activeHole.chips++" class="w-10 h-10 bg-slate-700 rounded-full font-black text-blue-400 text-xl">＋</button>
-                        </div>
-                    </div>
                 </div>
             </div>
 
-            <!-- 2. STATS TAB -->
-            <div v-show="currentTab === 'stats'" class="space-y-4">
-                <div class="bg-slate-800 p-6 rounded-[2rem] border border-slate-700 shadow-2xl">
-                    <h3 class="text-2xl font-black text-orange-500 italic mb-8 uppercase flex items-center gap-3">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                        Tiger 5 Tracker
-                    </h3>
+            <!-- TIGER 5 TAB -->
+            <div v-show="currentTab === 'stats'" class="space-y-4 animate-in slide-in-from-right">
+                <div class="bg-slate-800 p-6 rounded-[2.5rem] border border-slate-700 shadow-2xl">
+                    <h3 class="text-2xl font-black text-orange-500 italic mb-8 uppercase text-center tracking-widest">🔥 Tiger 5 Tracker</h3>
                     <div class="space-y-4">
-                        <!-- 項目名を大きく修正 -->
-                        <div v-for="(val, label) in tigerStats" :key="label" 
-                             class="flex justify-between items-center p-5 rounded-2xl border border-slate-700 bg-slate-950">
+                        <div v-for="(val, label) in tigerStats" :key="label" class="tiger-card bg-slate-950">
                             <span class="tiger-label">{{ label }}</span>
-                            <span class="text-4xl font-black italic" :class="val > 0 ? 'text-red-500' : 'text-emerald-500'">{{ val }}</span>
+                            <span class="tiger-value" :class="val > 0 ? 'text-red-500' : 'text-emerald-500'">{{ val }}</span>
                         </div>
                     </div>
-                    <div class="mt-12 pt-8 border-t border-slate-700 flex justify-between items-end">
-                        <div><p class="text-xs text-slate-500 font-black">GROSS</p><p class="text-6xl font-black text-emerald-500 italic leading-none">{{ totalScore }}</p></div>
-                        <div class="text-right"><p class="text-xs text-slate-500 font-black">TO PAR</p><p class="text-3xl font-black italic" :class="totalRelative.includes('+') ? 'text-red-500' : 'text-emerald-500'">{{ totalRelative }}</p></div>
+                    <div class="mt-12 pt-8 border-t border-slate-700 flex justify-between items-end px-4">
+                        <div><p class="text-xs text-slate-500 font-black">GROSS</p><p class="text-7xl font-black text-emerald-500 italic leading-none">{{ totalScore }}</p></div>
+                        <div class="text-right"><p class="text-xs text-slate-500 font-black">TO PAR</p><p class="text-4xl font-black italic" :class="totalRelative.includes('+') ? 'text-red-400' : 'text-emerald-400'">{{ totalRelative }}</p></div>
                     </div>
                 </div>
             </div>
 
-            <!-- 3. COURSE TAB -->
-            <div v-show="currentTab === 'settings'" class="space-y-6">
-                <section class="bg-slate-800 p-5 rounded-2xl border border-slate-700">
-                    <h2 class="text-emerald-400 text-xs font-black mb-4 uppercase tracking-widest">👤 プレイヤー</h2>
+            <!-- COURSE SETTINGS TAB -->
+            <div v-show="currentTab === 'settings'" class="space-y-6 animate-in slide-in-from-left">
+                <section class="bg-slate-800 p-6 rounded-3xl border border-slate-700">
+                    <h2 class="text-emerald-400 text-xs font-black mb-4 uppercase tracking-widest">👤 Player Config</h2>
                     <div class="grid grid-cols-2 gap-4">
-                        <div><label>DR平均 (y)</label><input type="number" v-model.number="player.driverDistance"></div>
+                        <div><label>DR飛距離(y)</label><input type="number" v-model.number="player.driverDistance"></div>
                         <div><label>持ち球</label>
                             <select v-model="player.shotShape">
                                 <option value="Straight">ストレート</option><option value="Fade">フェード</option><option value="Draw">ドロー</option>
@@ -178,31 +161,31 @@
                     </div>
                 </section>
 
-                <section class="bg-slate-800 p-5 rounded-2xl border border-slate-700">
-                    <h2 class="text-emerald-400 text-xs font-black mb-4 uppercase tracking-widest">⛳️ コース詳細設定</h2>
-                    <div class="space-y-5 max-h-[55vh] overflow-y-auto pr-1">
-                        <div v-for="(h, idx) in holes" :key="idx" class="p-4 bg-slate-900 rounded-2xl border border-slate-700">
+                <section class="bg-slate-800 p-6 rounded-3xl border border-slate-700">
+                    <h2 class="text-emerald-400 text-xs font-black mb-4 uppercase tracking-widest">⛳️ 18 Holes Data</h2>
+                    <div class="space-y-5 max-h-[50vh] overflow-y-auto pr-1">
+                        <div v-for="(h, idx) in holes" :key="idx" class="p-5 bg-slate-900 rounded-[2rem] border border-slate-700">
                             <div class="flex items-center justify-between mb-4">
-                                <span class="text-2xl font-black text-emerald-500">#{{ idx + 1 }}</span>
+                                <span class="text-3xl font-black text-emerald-500 italic">#{{ idx + 1 }}</span>
                                 <div class="flex gap-2">
-                                    <div class="w-16"><label>PAR</label><select v-model="h.par"><option :value="3">3</option><option :value="4">4</option><option :value="5">5</option></select></div>
-                                    <div class="w-24"><label>距離(y)</label><input type="number" v-model.number="h.yardage" class="text-center"></div>
+                                    <div class="w-20"><label>PAR</label><select v-model="h.par"><option :value="3">3</option><option :value="4">4</option><option :value="5">5</option></select></div>
+                                    <div class="w-28"><label>距離(y)</label><input type="number" v-model.number="h.yardage" class="text-center"></div>
                                 </div>
                             </div>
-                            <div class="grid grid-cols-2 gap-4 mb-4 border-t border-slate-800 pt-4">
-                                <div><label>↔︎ 幅 (y)</label><input type="number" v-model.number="h.greenWidth"></div>
-                                <div><label>↕︎ 奥行 (y)</label><input type="number" v-model.number="h.greenDepth"></div>
+                            <div class="grid grid-cols-2 gap-4 mb-4 border-t border-slate-800 pt-5">
+                                <div><label>↔︎ グリーン幅 (y)</label><input type="number" v-model.number="h.greenWidth"></div>
+                                <div><label>↕︎ グリーン奥行(y)</label><input type="number" v-model.number="h.greenDepth"></div>
                             </div>
-                            <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-inner">
+                            <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700">
                                 <span class="text-[10px] text-emerald-400 font-black uppercase block mb-3">今日のカップ位置 (ピンポジ)</span>
                                 <div class="grid grid-cols-2 gap-4">
-                                    <div><label>手前(y)</label><input type="number" v-model.number="h.pinFront"></div>
-                                    <div><label>左右(y)</label>
+                                    <div><label>手前エッジ(y)</label><input type="number" v-model.number="h.pinFront"></div>
+                                    <div><label>左右エッジ(y)</label>
                                         <div class="flex items-stretch">
-                                            <input type="number" v-model.number="h.pinSideDist" class="rounded-r-none border-r-0" style="border-radius: 8px 0 0 8px !important;">
+                                            <input type="number" v-model.number="h.pinSideDist" class="rounded-r-none border-r-0" style="border-radius: 10px 0 0 10px !important;">
                                             <div class="flex w-24">
                                                 <button @click="h.pinSide = 'L'" :class="{active: h.pinSide === 'L'}" class="toggle-btn rounded-none border-r-0">L</button>
-                                                <button @click="h.pinSide = 'R'" :class="{active: h.pinSide === 'R'}" class="toggle-btn rounded-r-lg text-red-400">R</button>
+                                                <button @click="h.pinSide = 'R'" :class="{active: h.pinSide === 'R'}" class="toggle-btn rounded-r-xl text-red-400">R</button>
                                             </div>
                                         </div>
                                     </div>
@@ -215,15 +198,15 @@
         </main>
     </div>
 
-    <!-- UI Loading Screen -->
+    <!-- Loading Screen -->
     <div id="loading-screen" class="fixed inset-0 bg-slate-950 flex flex-col items-center justify-center z-[100]">
-        <svg width="80" height="80" viewBox="0 0 512 512" class="animate-bounce">
-            <circle cx="256" cy="256" r="240" fill="#10B981"/>
-            <path d="M230 100 v312 M230 100 l120 60 l-120 60" fill="#EF4444" stroke="white" stroke-width="15" stroke-linejoin="round"/>
+        <svg width="100" height="100" viewBox="0 0 512 512" class="animate-bounce">
+            <circle cx="256" cy="256" r="240" fill="#10B981"/><path d="M230 100 v312 M230 100 l120 60 l-120 60" fill="#EF4444" stroke="white" stroke-width="15" stroke-linejoin="round"/>
         </svg>
-        <div class="mt-6 font-black italic text-emerald-500 uppercase tracking-[.4em] text-sm">DECADE PRO</div>
+        <div class="mt-8 font-black italic text-emerald-500 uppercase tracking-[.6em] text-sm">DECADE PRO</div>
     </div>
 
+    <!-- JS Libraries -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <script>
         const { createApp, ref, computed, onMounted, watch } = Vue;
@@ -248,17 +231,16 @@
                     const h = activeHole.value;
                     const backDist = h.greenDepth - h.pinFront;
                     const oppSide = h.greenWidth - h.pinSideDist;
-                    const redLine = 7; 
-                    if (h.pinFront < redLine || backDist < redLine || h.pinSideDist < redLine || oppSide < redLine) return 'RED';
+                    if (h.pinFront < 7 || backDist < 7 || h.pinSideDist < 7 || oppSide < 7) return 'RED';
                     if (h.pinFront < 10 || backDist < 10 || h.pinSideDist < 10) return 'YELLOW';
                     return 'GREEN';
                 });
 
                 const lightStatusText = computed(() => {
                     const s = lightStatus.value;
-                    if(s === 'RED') return '🔴 RED: CENTER';
-                    if(s === 'YELLOW') return '🟡 YELLOW: WIDE';
-                    return '🟢 GREEN: ATTACK';
+                    if(s === 'RED') return '🔴 RED: CENTER ONLY';
+                    if(s === 'YELLOW') return '🟡 YELLOW: WIDE SIDE';
+                    return '🟢 GREEN: ATTACK PIN';
                 });
 
                 const lightStatusClass = computed(() => `light-status-${lightStatus.value.toLowerCase()}`);
@@ -266,11 +248,11 @@
                 const strategyAdvice = computed(() => {
                     const h = activeHole.value;
                     const s = lightStatus.value;
-                    let m = s === 'RED' ? "ピン位置が危険です。ピンを完全に無視し、グリーンの中心だけを狙ってください。" : 
-                            s === 'YELLOW' ? `ピンの${h.pinSide === 'L' ? '右' : '左'}側（広い方）がターゲットです。` : 
-                            "安全な位置です。積極的にピンを狙いましょう。";
-                    if (player.value.shotShape === 'Fade') m += " フェードを計算し左から回すとより安全です。";
-                    if (player.value.shotShape === 'Draw') m += " ドローを計算し右から回すとより安全です。";
+                    let m = s === 'RED' ? "ピン位置が端すぎます。ピンは罠だと思って完全に無視し、グリーンの中心だけを狙ってください。" : 
+                            s === 'YELLOW' ? `ピンの${h.pinSide === 'L' ? '右' : '左'}側（広い方）が狙い目です。ミスしてもグリーンに残る確率を最大化してください。` : 
+                            "安全なピンポジです。自信があるならピンを直接狙ってバーディチャンスを狙いましょう。";
+                    if (player.value.shotShape === 'Fade') m += " 持ち球がフェードなので、狙い目はピンより左にセットし、戻ってくるのを信じてください。";
+                    if (player.value.shotShape === 'Draw') m += " 持ち球がドローなので、狙い目はピンより右にセットし、戻ってくるのを信じてください。";
                     return m;
                 });
 
@@ -282,11 +264,11 @@
                 });
 
                 const tigerStats = computed(() => {
-                    const s = { '3パット以上': 0, 'ダブルボギー以上': 0, 'P5ボギー以上': 0, '150y以内ボギー': 0, 'チップミス': 0 };
+                    const s = { '3パット': 0, 'ダボ以上': 0, 'P5ボギー以上': 0, '150y以内ボギー': 0, 'チップミス': 0 };
                     holes.value.forEach(h => {
                         const score = h.score || h.par;
-                        if (h.putts >= 3) s['3パット以上']++;
-                        if (score - h.par >= 2) s['ダブルボギー以上']++;
+                        if (h.putts >= 3) s['3パット']++;
+                        if (score - h.par >= 2) s['ダボ以上']++;
                         if (h.par === 5 && score > 5) s['P5ボギー以上']++;
                         if (h.approachDistance <= 150 && score > h.par) s['150y以内ボギー']++;
                         if (h.chips >= 2) s['チップミス']++;
@@ -296,17 +278,17 @@
 
                 const totalScore = computed(() => holes.value.reduce((acc, h) => acc + (h.score || h.par), 0));
                 const totalRelative = computed(() => {
-                    const diff = totalScore.value - holes.value.reduce((acc, h) => acc + h.par, 0);
+                    const parSum = holes.value.reduce((acc, h) => acc + h.par, 0);
+                    const diff = totalScore.value - parSum;
                     return diff === 0 ? 'E' : (diff > 0 ? '+' + diff : diff.toString());
                 });
 
                 const prevHole = () => { if (currentHoleIdx.value > 0) currentHoleIdx.value--; };
                 const nextHole = () => { if (currentHoleIdx.value < 17) currentHoleIdx.value++; };
-                const resetRound = () => { if (confirm("データを全てリセットしますか？")) { localStorage.removeItem('decade_final_v6'); location.reload(); } };
+                const resetRound = () => { if (confirm("データを全て消去して終了しますか？")) { localStorage.removeItem('decade_pwa_v1'); location.reload(); } };
 
                 onMounted(() => {
-                    document.getElementById('loading-screen').style.display = 'none';
-                    const stored = localStorage.getItem('decade_final_v6');
+                    const stored = localStorage.getItem('decade_pwa_v1');
                     if (stored) {
                         try {
                             const d = JSON.parse(stored);
@@ -315,10 +297,11 @@
                             currentHoleIdx.value = d.currentHoleIdx || 0;
                         } catch(e) {}
                     }
+                    setTimeout(() => { document.getElementById('loading-screen').style.display = 'none'; }, 1000);
                 });
 
                 watch([player, holes, currentHoleIdx], () => {
-                    localStorage.setItem('decade_final_v6', JSON.stringify({
+                    localStorage.setItem('decade_pwa_v1', JSON.stringify({
                         player: player.value, holes: holes.value, currentHoleIdx: currentHoleIdx.value
                     }));
                 }, { deep: true });
@@ -330,8 +313,17 @@
                 };
             }
         }).mount('#app');
-        
-        setTimeout(() => { document.getElementById('loading-screen').style.display = 'none'; }, 2000);
+
+        // Service Worker Registration for Offline Use
+        if ('serviceWorker' in navigator) {
+            const swScript = `
+                const CACHE_NAME = 'decade-pro-v1';
+                self.addEventListener('install', e => e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(['./']))));
+                self.addEventListener('fetch', e => e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))));
+            `;
+            const blob = new Blob([swScript], { type: 'application/javascript' });
+            navigator.serviceWorker.register(URL.createObjectURL(blob));
+        }
     </script>
 </body>
 </html>

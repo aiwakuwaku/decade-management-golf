@@ -1,12 +1,10 @@
 {
   "name": "DECADE GOLF PRO",
   "short_name": "DECADE PRO",
-  "description": "DECADE理論に基づくコースマネジメントアプリ",
-  "start_url": "./index.html",
+  "start_url": "index.html",
   "display": "standalone",
-  "orientation": "portrait",
   "background_color": "#0F172A",
-  "theme_color": "#0F172A",
+  "theme_color": "#1E293B",
   "icons": [
     {
       "src": "icon.svg",

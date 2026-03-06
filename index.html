@@ -10,134 +10,182 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="DECADE PRO">
+    <meta name="mobile-web-app-capable" content="yes">
 
-    <!-- 192x192 アイコン (Android 必須) -->
+    <!-- アイコン: 192x192 & 512x512 両対応 (AndroidのChromeマーク対策) -->
     <link rel="icon" type="image/png" sizes="192x192" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='40' fill='%2310B981'/%3E%3Cpath d='M85 40 v112 M85 40 l45 22 l-45 22' fill='white'/%3E%3C/svg%3E">
-    
-    <!-- 512x512 アイコン (Chrome インストール必須) -->
     <link rel="apple-touch-icon" sizes="512x512" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='110' fill='%2310B981'/%3E%3Cpath d='M230 100 v312 M230 100 l120 60 l-120 60' fill='white'/%3E%3C/svg%3E">
 
-    <!-- PWA Manifest (Base64: 192と512の両方を明記) -->
-    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkRFQ0FERSBHT0xGIFBSTyIsCiAgInNob3J0X25hbWUiIjogIkRFQ0FERVBSTyIsCiAgInN0YXJ0X3VybCI6ICIuLyIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiIzBGMTcyQSIsCiAgInRoZW1lX2NvbG9yIjogIiMwRjE3MkEiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWwsJTNcontextdmclMjB4bWxucz0nd3d3LnczLm9yZy8yMDAwL3N2Zyc2MHZpZXdCb3g9JzAgMCAxOTIgMTkyJyUzRSUzQ3JlY3QlMjB3aWR0aD0nMTkyJTIwaGVpZ2h0PScxOTInJTIwcng9JzQwJyUyMGZpbGw9JyUyMzEwQjk4MScvJTNFJTNDcGF0aCUyMGQ9J004NSUyMDQwJTIwdjExMiUyME04NSUyMDQwJTIwbDQ1JTIwMjIlMjBsLTQ1JTIwMjInJTIwZmlsbD0nd2hpdGUnLzUzRSUzQy9zdmclM0UiLAogICAgICAic2l6ZXMiIjogIjE5MngxOTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIgogICAgfSwKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWwsJTNcontextdmclMjB4bWxucz0nd3d3LnczLm9yZy8yMDAwL3N2Zyc2MHZpZXdCb3g9JzAgMCA1MTIgNTEyJyUzRSUzQ3JlY3QlMjB3aWR0aD0nNTEyJTIwaGVpZ2h0PSc1MTInJTIwcng9JzExMCclMjBmaWxsPSclMjMxMEI5ODEnLzUzRSUzQ3BhdGglMjBkPSdNMjMwJTIwMTAwJTIwdjMxMiUyME0yMzAlMjAxMDAlMjBsMTIwJTIwNjAlMjBsLTEyMCUyMDYwJyUyMGZpbGw9J3doaXRlJy8lM0UlM0Mvc3ZnJTNFIiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIgogICAgfQogIF0KfQ==">
+    <!-- PWA Manifest (Base64) -->
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkRFQ0FERSBHT0xGIFBSTyIsCiAgInNob3J0X25hbWUiIjogIkRFQ0FERVBSTyIsCiAgInN0YXJ0X3VybCI6ICIuLyIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiIzBGMTcyQSIsCiAgInRoZW1lX2NvbG9yIjogIiMwRjE3MkEiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWwsJTNcontextdmclMjB4bWxucz0nd3d3LnczLm9yZy8yMDAwL3N2Zyc2MHZpZXdCb3g9JzAgMCAxOTIgMTkyJyUzRSUzQ3JlY3QlMjB3aWR0aD0nMTkyJTIwaGVpZ2h0PScxOTInJTIwcng9JzQwJyUyMGZpbGw9JyUyMzEwQjk4MScvJTNFJTNDcGF0aCUyMGQ9J004NSUyMDQwJTIwdjExMiUyME04NSUyMDQwJTIwbDQ1JTIwMjIlMjBsLTQ1JTIwMjInJTIwZmlsbD0nd2hpdGUnLzUzRSUzQy9zdmclM0UiLAogICAgICAic2l6ZXMiIjogIjE5MngxOTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIgogICAgfSwKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWwsJTNcontextdmclMjB4bWxucz0nd3d3LnczLm9yZy8yMDAwL3N2Zyc2MHZpZXdCb3g9JzAgMCA1MTIgNTEyJyUzRSUzQ3JlY3QlMjB3aWR0aD0nNTEyJTIwaGVpZ2h0PSc1MTInJTIwcng9JzExMCclMjBmaWxsPSclMjMxMEI5ODEnLzUzRSUzQ3BhdGglMjBkPSdNMjMwJTIwMTAwJTIwdjMxMiUyME0yMzAlMjAxMDAlMjBsMTIwJTIwNjAlMjBsLTEyMCUyMDYwJyUyMGZpbGw9J3doaXRlJy8lM0UlM0Mvc3ZnJTNFIiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInB1cnBvc2UiOiAiYW55IG1hc2thYmxlIgogICAgfQogIF0KfQ==">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         [v-cloak] { display: none !important; }
-        body { background-color: #0F172A; color: #F8FAFC; user-select: none; font-family: sans-serif; overflow-x: hidden; }
-        .tab-btn { flex: 1; text-align: center; font-size: 18px; font-weight: 900; py: 20px; color: #64748B; border-bottom: 5px solid transparent; }
-        .tab-active { border-bottom-color: #10B981; color: #10B981; background: rgba(16, 185, 129, 0.08); }
-        .tiger-card { background: #1E293B; border: 1px solid #334155; border-radius: 20px; padding: 20px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
-        .tiger-label { font-size: 18px; font-weight: 900; }
-        .tiger-value { font-size: 44px; font-weight: 900; font-style: italic; }
-        .green-visual { background: #064E3B; border-radius: 40% 40% 45% 45%; border: 4px solid #065F46; position: relative; height: 180px; width: 140px; }
-        .pin-dot { position: absolute; width: 14px; height: 14px; background: #EF4444; border: 2px solid white; border-radius: 50%; transform: translate(-50%, 50%); z-index: 10; box-shadow: 0 0 10px #EF4444; }
-        input, select { background-color: #1E293B !important; border: 2px solid #475569 !important; color: white !important; font-size: 16px !important; border-radius: 10px !important; padding: 10px !important; font-weight: bold; }
-        .toggle-btn { flex: 1; text-align: center; py: 10px; font-size: 16px; font-weight: 900; background: #1E293B; border: 1px solid #334155; }
+        body { -webkit-tap-highlight-color: transparent; background-color: #0F172A; color: #F8FAFC; user-select: none; font-family: system-ui, sans-serif; overflow-x: hidden; }
+        
+        /* 特大タブメニュー */
+        .tab-btn { flex: 1; text-align: center; font-size: 20px; font-weight: 900; py: 22px; color: #64748B; border-bottom: 5px solid transparent; transition: all 0.3s; }
+        .tab-active { border-bottom-color: #10B981; color: #10B981; background: rgba(16, 185, 129, 0.1); }
+        
+        /* 特大Tiger 5項目 */
+        .tiger-card { background: #1E293B; border: 1px solid #334155; border-radius: 24px; padding: 24px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .tiger-label { font-size: 19px; font-weight: 900; color: #F1F5F9; letter-spacing: -0.02em; }
+        .tiger-value { font-size: 52px; font-weight: 900; font-style: italic; line-height: 1; }
+
+        /* グリーン描画 */
+        .green-base { background: #064E3B; border-radius: 45% 45% 48% 48%; position: relative; border: 3px solid #065F46; box-shadow: inset 0 0 25px rgba(0,0,0,0.8); }
+        .pin-marker { position: absolute; width: 14px; height: 14px; background: #EF4444; border: 2.5px solid white; border-radius: 50%; transform: translate(-50%, 50%); z-index: 20; box-shadow: 0 0 15px #EF4444; }
+        
+        input, select { background-color: #1E293B !important; border: 2px solid #475569 !important; color: white !important; font-size: 18px !important; border-radius: 12px !important; padding: 12px !important; width: 100%; font-weight: bold; }
+        label { font-size: 12px; color: #94A3B8; font-weight: 900; text-transform: uppercase; margin-bottom: 4px; display: block; }
+        
+        .toggle-btn { flex: 1; text-align: center; py: 12px; font-size: 18px; font-weight: 900; background: #1E293B; border: 2px solid #334155; }
         .toggle-btn.active { background: #10B981; color: #0F172A; border-color: #10B981; }
-        .light-status-green { background: rgba(16, 185, 129, 0.3); color: #34D399; border: 1px solid #10B981; }
-        .light-status-yellow { background: rgba(245, 158, 11, 0.3); color: #FBBF24; border: 1px solid #F59E0B; }
-        .light-status-red { background: rgba(239, 68, 68, 0.3); color: #F87171; border: 1px solid #EF4444; }
+
+        .light-status-green { background: rgba(16, 185, 129, 0.3); color: #34D399; border: 2px solid #10B981; }
+        .light-status-yellow { background: rgba(245, 158, 11, 0.3); color: #FBBF24; border: 2px solid #F59E0B; }
+        .light-status-red { background: rgba(239, 68, 68, 0.3); color: #F87171; border: 2px solid #EF4444; }
     </style>
 </head>
 <body>
 
-    <div id="app" v-cloak class="max-w-md mx-auto flex flex-col min-h-screen">
-        <header class="p-4 bg-slate-800 border-b border-slate-700 flex justify-between items-center sticky top-0 z-50 shadow-lg">
-            <h1 class="text-xl font-black text-emerald-500 italic">DECADE PRO</h1>
-            <button @click="resetData" class="text-[10px] bg-red-900/30 px-3 py-1 rounded-full font-bold text-red-400">RESET</button>
+    <div id="app" v-cloak class="max-w-md mx-auto flex flex-col min-h-screen relative">
+        
+        <!-- HEADER -->
+        <header class="p-4 bg-slate-800 border-b border-slate-700 flex justify-between items-center sticky top-0 z-50">
+            <div class="flex items-center gap-2">
+                <svg width="24" height="24" viewBox="0 0 512 512"><circle cx="256" cy="256" r="240" fill="#10B981"/><path d="M230 100 v312 M230 100 l120 60 l-120 60" fill="#EF4444" stroke="white" stroke-width="15" stroke-linejoin="round"/></svg>
+                <h1 class="text-xl font-black text-emerald-500 italic">DECADE GOLF</h1>
+            </div>
+            <button @click="resetData" class="text-[10px] bg-red-900/40 px-3 py-1 rounded-full font-black text-red-400">CLEAR ALL</button>
         </header>
 
-        <nav class="flex bg-slate-800 border-b border-slate-700 shadow-xl sticky top-[61px] z-40">
+        <!-- NAVIGATION (常時表示・特大) -->
+        <nav class="flex bg-slate-800 border-b border-slate-700 shadow-2xl sticky top-[61px] z-40">
             <button @click="currentTab = 'play'" :class="{'tab-active': currentTab === 'play'}" class="tab-btn">PLAY</button>
             <button @click="currentTab = 'stats'" :class="{'tab-active': currentTab === 'stats'}" class="tab-btn">TIGER 5</button>
             <button @click="currentTab = 'settings'" :class="{'tab-active': currentTab === 'settings'}" class="tab-btn">COURSE</button>
         </nav>
 
-        <main class="flex-1 p-4 pb-12 overflow-y-auto">
-            <!-- PLAY TAB -->
+        <main class="flex-1 p-4 pb-20 overflow-y-auto">
+            
+            <!-- 1. PLAY TAB -->
             <div v-show="currentTab === 'play'" class="space-y-6">
-                <div class="bg-slate-800 rounded-[2rem] p-6 border border-slate-700 shadow-2xl">
-                    <div class="flex justify-between items-center mb-6">
-                        <button @click="prevHole" class="w-12 h-12 bg-slate-700 rounded-full font-black">◀</button>
+                <!-- Hole Info & Green Visual -->
+                <div class="bg-slate-800 rounded-[2.5rem] p-6 border border-slate-700 shadow-2xl">
+                    <div class="flex justify-between items-center mb-8">
+                        <button @click="prevHole" :disabled="currentHoleIdx === 0" class="w-14 h-14 bg-slate-700 rounded-full flex items-center justify-center disabled:opacity-5 text-xl font-black">◀</button>
                         <div class="text-center">
-                            <span class="text-[10px] font-black text-slate-500 tracking-[.3em]">HOLE {{ currentHoleIdx + 1 }}</span>
-                            <h2 class="text-4xl font-black italic">Par {{ activeHole.par }}</h2>
+                            <span class="text-[10px] font-black text-slate-500 uppercase tracking-[.3em]">Hole {{ currentHoleIdx + 1 }}</span>
+                            <h2 class="text-5xl font-black italic tracking-tighter">Par {{ activeHole.par }}</h2>
                         </div>
-                        <button @click="nextHole" class="w-12 h-12 bg-slate-700 rounded-full font-black">▶</button>
+                        <button @click="nextHole" :disabled="currentHoleIdx === 17" class="w-14 h-14 bg-slate-700 rounded-full flex items-center justify-center disabled:opacity-5 text-xl font-black">▶</button>
                     </div>
-                    <div class="flex justify-center mb-6"><div class="green-visual"><div class="pin-dot" :style="pinPos"></div></div></div>
-                    <div class="space-y-3">
-                        <div class="p-3 rounded-xl font-black text-xs flex justify-between" :class="lightStatusClass">
-                            <span>{{ lightStatusText }}</span><span>{{ activeHole.pinSide }}{{ activeHole.pinSideDist }} / F{{ activeHole.pinFront }}</span>
+
+                    <div class="flex flex-col items-center mb-8">
+                        <div class="green-base w-44 h-52 shadow-2xl border-4 border-emerald-950">
+                            <div class="pin-marker" :style="pinVisualPosition"></div>
+                            <div class="absolute bottom-2 w-full text-center text-[8px] font-black text-emerald-300/20 uppercase tracking-widest">Front Edge</div>
                         </div>
-                        <div class="bg-slate-950 p-4 rounded-2xl border-l-4 border-emerald-500 text-sm leading-relaxed">{{ strategyAdvice }}</div>
+                    </div>
+
+                    <!-- DECADE Strategy -->
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-2xl font-black text-sm flex justify-between items-center" :class="lightStatusClass">
+                            <span>{{ lightStatusText }}</span>
+                            <span class="bg-black/20 px-2 py-1 rounded text-[10px]">{{ activeHole.pinSide }}{{ activeHole.pinSideDist }} / F{{ activeHole.pinFront }}</span>
+                        </div>
+                        <div class="bg-slate-950 p-5 rounded-3xl border-l-8 border-emerald-500 text-[15px] font-bold leading-relaxed text-slate-200 shadow-xl">
+                            {{ strategyAdvice }}
+                        </div>
                     </div>
                 </div>
 
-                <div class="bg-slate-800 rounded-[2rem] p-6 border border-slate-700 shadow-xl space-y-4">
-                    <div class="bg-slate-900 p-4 rounded-xl border border-slate-700">
-                        <label class="text-emerald-500">アプローチ残り距離 (y)</label>
-                        <input type="number" v-model.number="activeHole.approachDistance" class="text-4xl font-black text-center border-none bg-transparent">
+                <!-- Input Zone -->
+                <div class="bg-slate-800 rounded-[2.5rem] p-6 border border-slate-700 shadow-xl space-y-6">
+                    <div class="bg-slate-900 p-5 rounded-2xl border border-slate-700">
+                        <label class="text-emerald-500 text-sm">アプローチ残り距離 (y)</label>
+                        <div class="flex items-center gap-4 mt-1">
+                            <input type="number" v-model.number="activeHole.approachDistance" class="flex-1 text-5xl font-black text-center border-none bg-transparent">
+                            <span v-if="activeHole.approachDistance <= 150" class="text-[10px] bg-emerald-500 text-slate-950 px-2 py-1 rounded-md font-black">TRACK 150</span>
+                        </div>
                     </div>
+
                     <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-slate-900 p-3 rounded-2xl border border-slate-700 text-center">
+                        <div class="bg-slate-900 p-4 rounded-3xl border border-slate-700 text-center">
                             <label>SCORE</label>
-                            <div class="flex items-center justify-around">
-                                <button @click="activeHole.score--" class="w-8 h-8 bg-slate-700 rounded-full font-bold">－</button>
-                                <span class="text-3xl font-black italic">{{ activeHole.score || activeHole.par }}</span>
-                                <button @click="activeHole.score++" class="w-8 h-8 bg-slate-700 rounded-full font-bold">＋</button>
+                            <div class="flex items-center justify-around mt-3">
+                                <button @click="activeHole.score--" class="w-12 h-12 bg-slate-700 rounded-full font-black text-2xl">－</button>
+                                <span class="text-4xl font-black italic">{{ activeHole.score || activeHole.par }}</span>
+                                <button @click="activeHole.score++" class="w-12 h-12 bg-slate-700 rounded-full font-black text-2xl">＋</button>
                             </div>
                         </div>
-                        <div class="bg-slate-900 p-3 rounded-2xl border border-slate-700 text-center text-orange-400">
+                        <div class="bg-slate-900 p-4 rounded-3xl border border-slate-700 text-center text-orange-400">
                             <label class="text-orange-400">PUTTS</label>
-                            <div class="flex items-center justify-around">
-                                <button @click="activeHole.putts--" class="w-8 h-8 bg-slate-700 rounded-full font-bold">－</button>
-                                <span class="text-3xl font-black italic">{{ activeHole.putts }}</span>
-                                <button @click="activeHole.putts++" class="w-8 h-8 bg-slate-700 rounded-full font-bold">＋</button>
+                            <div class="flex items-center justify-around mt-3">
+                                <button @click="activeHole.putts--" class="w-12 h-12 bg-slate-700 rounded-full font-black text-2xl">－</button>
+                                <span class="text-4xl font-black italic">{{ activeHole.putts }}</span>
+                                <button @click="activeHole.putts++" class="w-12 h-12 bg-slate-700 rounded-full font-black text-2xl">＋</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- TIGER 5 TAB -->
-            <div v-show="currentTab === 'stats'" class="space-y-4">
-                <div class="bg-slate-800 p-6 rounded-[2rem] border border-slate-700 shadow-2xl">
-                    <h3 class="text-xl font-black text-orange-500 italic mb-8 uppercase text-center tracking-widest">🔥 Tiger 5 Stats</h3>
-                    <div v-for="(val, label) in tigerStats" :key="label" class="tiger-card bg-slate-950">
-                        <span class="tiger-label">{{ label }}</span>
-                        <span class="tiger-value" :class="val > 0 ? 'text-red-500' : 'text-emerald-500'">{{ val }}</span>
+            <!-- 2. TIGER 5 TAB -->
+            <div v-show="currentTab === 'stats'" class="space-y-4 animate-in slide-in-from-right">
+                <div class="bg-slate-800 p-6 rounded-[2.5rem] border border-slate-700 shadow-2xl">
+                    <h3 class="text-2xl font-black text-orange-500 italic mb-8 uppercase text-center tracking-widest">🔥 Tiger 5 Stats</h3>
+                    <div class="space-y-4">
+                        <div v-for="(val, label) in tigerStats" :key="label" class="tiger-card bg-slate-950">
+                            <span class="tiger-label">{{ label }}</span>
+                            <span class="tiger-value" :class="val > 0 ? 'text-red-500' : 'text-emerald-500'">{{ val }}</span>
+                        </div>
                     </div>
-                    <div class="mt-8 pt-6 border-t border-slate-700 flex justify-between items-end px-4">
-                        <div><p class="text-[10px] text-slate-500 font-black">GROSS</p><p class="text-6xl font-black text-emerald-500 italic">{{ totalScore }}</p></div>
-                        <div class="text-right"><p class="text-[10px] text-slate-500 font-black">TO PAR</p><p class="text-4xl font-black italic" :class="totalRelative.includes('+') ? 'text-red-400' : 'text-emerald-400'">{{ totalRelative }}</p></div>
+                    <div class="mt-12 pt-8 border-t border-slate-700 flex justify-between items-end px-4">
+                        <div><p class="text-xs text-slate-500 font-black uppercase">Gross Score</p><p class="text-7xl font-black text-emerald-500 italic leading-none">{{ totalScore }}</p></div>
+                        <div class="text-right"><p class="text-xs text-slate-500 font-black uppercase font-bold">To Par</p><p class="text-4xl font-black italic" :class="totalRelative.includes('+') ? 'text-red-400' : 'text-emerald-400'">{{ totalRelative }}</p></div>
                     </div>
                 </div>
             </div>
 
-            <!-- COURSE TAB -->
-            <div v-show="currentTab === 'settings'" class="space-y-6">
-                <section class="bg-slate-800 p-6 rounded-3xl border border-slate-700">
-                    <h2 class="text-emerald-400 text-xs font-black mb-4 uppercase tracking-widest italic">⛳️ Hole Detail</h2>
-                    <div class="space-y-6 max-h-[60vh] overflow-y-auto pr-1">
-                        <div v-for="(h, idx) in holes" :key="idx" class="p-5 bg-slate-900 rounded-[2rem] border border-slate-700 shadow-inner">
+            <!-- 3. COURSE SETTINGS TAB -->
+            <div v-show="currentTab === 'settings'" class="space-y-6 animate-in slide-in-from-left">
+                <section class="bg-slate-800 p-5 rounded-3xl border border-slate-700">
+                    <h2 class="text-emerald-400 text-xs font-black mb-4 uppercase tracking-widest">👤 Player Config</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div><label>DR平均飛距離(y)</label><input type="number" v-model.number="player.driverDistance"></div>
+                        <div><label>持ち球</label>
+                            <select v-model="player.shotShape">
+                                <option value="Straight">ストレート</option><option value="Fade">フェード</option><option value="Draw">ドロー</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="bg-slate-800 p-5 rounded-3xl border border-slate-700">
+                    <h2 class="text-emerald-400 text-xs font-black mb-4 uppercase tracking-widest italic">⛳️ Course Data (18 Holes)</h2>
+                    <div class="space-y-6">
+                        <div v-for="(h, idx) in holes" :key="idx" class="p-5 bg-slate-900 rounded-[2.5rem] border border-slate-700">
                             <div class="flex items-center justify-between mb-4">
-                                <span class="text-2xl font-black text-emerald-500">#{{ idx + 1 }}</span>
+                                <span class="text-4xl font-black text-emerald-500 italic">#{{ idx + 1 }}</span>
                                 <div class="flex gap-2">
-                                    <div class="w-16"><label>PAR</label><select v-model="h.par"><option :value="3">3</option><option :value="4">4</option><option :value="5">5</option></select></div>
-                                    <div class="w-24"><label>距離(y)</label><input type="number" v-model.number="h.yardage" class="text-center"></div>
+                                    <div class="w-20"><label>PAR</label><select v-model="h.par"><option :value="3">3</option><option :value="4">4</option><option :value="5">5</option></select></div>
+                                    <div class="w-32"><label>距離(y)</label><input type="number" v-model.number="h.yardage" class="text-center"></div>
                                 </div>
                             </div>
                             <div class="grid grid-cols-2 gap-4 mb-4 pt-4 border-t border-slate-800">
                                 <div><label>↔ 幅 (y)</label><input type="number" v-model.number="h.greenWidth"></div>
                                 <div><label>↕ 奥行 (y)</label><input type="number" v-model.number="h.greenDepth"></div>
                             </div>
-                            <div class="bg-slate-800 p-4 rounded-xl">
+                            <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 shadow-inner">
+                                <span class="text-[10px] text-emerald-400 font-black uppercase block mb-3 text-center underline decoration-emerald-900">ピン位置設定 (Cup Position)</span>
                                 <div class="grid grid-cols-2 gap-4">
                                     <div><label>手前(y)</label><input type="number" v-model.number="h.pinFront"></div>
                                     <div><label>左右(y)</label>
                                         <div class="flex items-stretch">
-                                            <input type="number" v-model.number="h.pinSideDist" class="rounded-r-none border-r-0" style="border-radius: 10px 0 0 10px !important; width: 60px;">
+                                            <input type="number" v-model.number="h.pinSideDist" class="rounded-r-none border-r-0" style="border-radius: 12px 0 0 12px !important; width: 60px;">
                                             <div class="flex flex-1">
                                                 <button @click="h.pinSide = 'L'" :class="{active: h.pinSide === 'L'}" class="toggle-btn rounded-none border-r-0">L</button>
                                                 <button @click="h.pinSide = 'R'" :class="{active: h.pinSide === 'R'}" class="toggle-btn rounded-r-xl text-red-400">R</button>
@@ -155,7 +203,7 @@
 
     <!-- Initialization Screen -->
     <div id="loading-screen" class="fixed inset-0 bg-slate-950 flex flex-col items-center justify-center z-[100]">
-        <div class="text-center font-black italic text-emerald-500 animate-pulse uppercase tracking-[.4em] text-xl">DECADE GOLF</div>
+        <div class="text-center font-black italic text-emerald-500 animate-pulse uppercase tracking-[.4em] text-xl">DECADE PRO</div>
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
@@ -167,6 +215,7 @@
                 const currentTab = ref('play');
                 const currentHoleIdx = ref(0);
                 const player = ref({ driverDistance: 240, shotShape: 'Straight' });
+                const isRoundActive = ref(true);
 
                 const holes = ref(Array.from({length: 18}, () => ({
                     par: 4, yardage: 380, approachDistance: 150,
@@ -188,9 +237,9 @@
 
                 const lightStatusText = computed(() => {
                     const s = lightStatus.value;
-                    if(s === 'RED') return '🔴 RED: CENTER';
-                    if(s === 'YELLOW') return '🟡 YELLOW: WIDE';
-                    return '🟢 GREEN: ATTACK';
+                    if(s === 'RED') return '🔴 RED: CENTER ONLY';
+                    if(s === 'YELLOW') return '🟡 YELLOW: WIDE SIDE';
+                    return '🟢 GREEN: ATTACK PIN';
                 });
 
                 const lightStatusClass = computed(() => `light-status-${lightStatus.value.toLowerCase()}`);
@@ -199,26 +248,28 @@
                     const h = activeHole.value;
                     const s = lightStatus.value;
                     let m = s === 'RED' ? "危険：ピンを完全に無視してください。グリーン中央だけがターゲットです。" : 
-                            s === 'YELLOW' ? `広いサイドを狙ってください。ピンの${h.pinSide === 'L' ? '右' : '左'}側が狙い目です。` : 
+                            s === 'YELLOW' ? `ピンの${h.pinSide === 'L' ? '右' : '左'}側、広いサイドが狙い目です。` : 
                             "安全：積極的にピンを狙いましょう。";
+                    if (player.value.shotShape === 'Fade') m += " フェードで左から回すラインが理想的です。";
+                    if (player.value.shotShape === 'Draw') m += " ドローで右から回すラインが理想的です。";
                     return m;
                 });
 
-                const pinPos = computed(() => {
+                const pinVisualPosition = computed(() => {
                     const h = activeHole.value;
-                    const b = (h.pinFront / h.greenDepth) * 100;
-                    let l = h.pinSide === 'L' ? (h.pinSideDist / h.greenWidth) * 100 : 100 - ((h.pinSideDist / h.greenWidth) * 100);
-                    return { bottom: `${b}%`, left: `${l}%` };
+                    const bottom = (h.pinFront / h.greenDepth) * 100;
+                    let left = h.pinSide === 'L' ? (h.pinSideDist / h.greenWidth) * 100 : 100 - ((h.pinSideDist / h.greenWidth) * 100);
+                    return { bottom: `${bottom}%`, left: `${left}%` };
                 });
 
                 const tigerStats = computed(() => {
-                    const s = { '3パット': 0, 'ダボ以上': 0, 'P5ボギー以上': 0, '150y以内ボギー': 0, 'チップミス': 0 };
+                    const s = { '3パット': 0, 'ダボ以上': 0, 'P5ボギー': 0, '150y内ボギー': 0, 'チップミス': 0 };
                     holes.value.forEach(h => {
                         const sc = h.score || h.par;
                         if (h.putts >= 3) s['3パット']++;
                         if (sc - h.par >= 2) s['ダボ以上']++;
-                        if (h.par === 5 && sc > 5) s['P5ボギー以上']++;
-                        if (h.approachDistance <= 150 && sc > h.par) s['150y以内ボギー']++;
+                        if (h.par === 5 && sc > 5) s['P5ボギー']++;
+                        if (h.approachDistance <= 150 && sc > h.par) s['150y内ボギー']++;
                         if (h.chips >= 2) s['チップミス']++;
                     });
                     return s;
@@ -232,10 +283,10 @@
 
                 const prevHole = () => { if (currentHoleIdx.value > 0) currentHoleIdx.value--; };
                 const nextHole = () => { if (currentHoleIdx.value < 17) currentHoleIdx.value++; };
-                const resetData = () => { if (confirm("消去？")) { localStorage.clear(); location.reload(); } };
+                const resetData = () => { if (confirm("全データを消去しますか？")) { localStorage.clear(); location.reload(); } };
 
                 onMounted(() => {
-                    const stored = localStorage.getItem('decade_final_v10');
+                    const stored = localStorage.getItem('decade_pwa_v11');
                     if (stored) {
                         try {
                             const d = JSON.parse(stored);
@@ -248,24 +299,24 @@
                 });
 
                 watch([player, holes, currentHoleIdx], () => {
-                    localStorage.setItem('decade_final_v10', JSON.stringify({
+                    localStorage.setItem('decade_pwa_v11', JSON.stringify({
                         player: player.value, holes: holes.value, currentHoleIdx: currentHoleIdx.value
                     }));
                 }, { deep: true });
 
                 return {
-                    currentTab, currentHoleIdx, player, holes, activeHole,
-                    lightStatusText, lightStatusClass, strategyAdvice, pinPos,
+                    currentTab, currentHoleIdx, player, holes, activeHole, isRoundActive,
+                    lightStatusText, lightStatusClass, strategyAdvice, pinVisualPosition,
                     tigerStats, totalScore, totalRelative, prevHole, nextHole, resetData
                 };
             }
         }).mount('#app');
 
-        // --- 強力な Service Worker 自己生成登録 ---
+        // Service Worker for Android Chrome Masking Fix
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 const swCode = `
-                    const CACHE = 'decade-v10';
+                    const CACHE = 'decade-v11';
                     self.addEventListener('install', e => {
                         self.skipWaiting();
                         e.waitUntil(caches.open(CACHE).then(c => c.addAll(['./'])));
@@ -276,10 +327,7 @@
                     ));
                 `;
                 const blob = new Blob([swCode], { type: 'application/javascript' });
-                const workerUrl = URL.createObjectURL(blob);
-                navigator.serviceWorker.register(workerUrl).then(reg => {
-                    console.log('PWA Ready');
-                }).catch(err => console.log('PWA Error', err));
+                navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(e => {});
             });
         }
     </script>

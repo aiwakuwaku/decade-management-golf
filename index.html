@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DECADE GOLF PRO</title>
+    
+    <!-- PWA設定 -->
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkRFQ0FERSBHT0xGIFBSTyIsCiAgInNob3J0X25hbWUiIjogIkRFQ0FERVBybyIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMEYxNzJBIiwKICAidGhlbWVfY29sb3IiIjogIiMwRjE3MkEiCn0=">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        [v-cloak] { display: none !important; }
+        body { -webkit-tap-highlight-color: transparent; background-color: #0F172A; color: #F8FAFC; }
+        .tab-active { border-bottom: 3px solid #10B981; color: #10B981; font-weight: 900; }
+        .green-base { background: #064E3B; border-radius: 45% 45% 48% 48%; position: relative; border: 3px solid #065F46; box-shadow: inset 0 0 15px rgba(0,0,0,0.5); }
+        .pin-marker { position: absolute; width: 12px; height: 12px; background: #EF4444; border: 2px solid white; border-radius: 50%; transform: translate(-50%, 50%); z-index: 20; box-shadow: 0 0 8px rgba(239,68,68,0.8); }
+        input, select { background-color: #1E293B !important; border: 1px solid #334155 !important; color: white !important; font-size: 16px !important; border-radius: 6px !important; padding: 6px 8px !important; width: 100%; }
+        label { font-size: 10px; color: #94A3B8; font-weight: bold; text-transform: uppercase; margin-bottom: 4px; display: block; }
+        .toggle-btn { flex: 1; text-align: center; padding: 8px 0; font-size: 12px; font-weight: 900; background: #1E293B; border: 1px solid #334155; }
+        .toggle-btn.active { background: #10B981; color: #0F172A; border-color: #10B981; }
+        .light-status-green { background: rgba(16, 185, 129, 0.2); color: #34D399; }
+        .light-status-yellow { background: rgba(245, 158, 11, 0.2); color: #FBBF24; }
+        .light-status-red { background: rgba(239, 68, 68, 0.2); color: #F87171; }
+    </style>
+</head>
+<body>
+
+    <div id="app" v-cloak class="max-w-md mx-auto flex flex-col min-h-screen">
+        
+        <!-- Header -->
+        <header class="p-4 bg-slate-800 border-b border-slate-700 flex justify-between items-center sticky top-0 z-50">
+            <div class="flex items-center gap-2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <h1 class="text-lg font-black text-emerald-500 italic">DECADE GOLF</h1>
+            </div>
+            <button v-if="isRoundActive" @click="resetRound" class="text-[10px] bg-red-600 px-3 py-1 rounded-full font-bold text-white uppercase">Reset</button>
+        </header>
+
+        <!-- Navigation -->
+        <nav v-if="isRoundActive" class="flex bg-slate-800 border-b border-slate-700 shadow-md">
+            <button @click="currentTab = 'play'" :class="{'tab-active': currentTab === 'play'}" class="flex-1 py-4 text-[11px] font-black">PLAY</button>
+            <button @click="currentTab = 'stats'" :class="{'tab-active': currentTab === 'stats'}" class="flex-1 py-4 text-[11px] font-black">TIGER 5</button>
+            <button @click="currentTab = 'settings'" :class="{'tab-active': currentTab === 'settings'}" class="flex-1 py-4 text-[11px] font-black">COURSE</button>
+        </nav>
+
+        <main class="flex-1 p-4 pb-12 overflow-y-auto">
+            
+            <!-- 1. SETTINGS / INITIAL SETUP -->
+            <div v-if="currentTab === 'settings' || !isRoundActive" class="space-y-6">
+                <section class="bg-slate-800 p-4 rounded-2xl border border-slate-700 shadow-xl">
+                    <h2 class="text-emerald-400 text-[10px] font-black mb-4 uppercase tracking-widest">👤 プレイヤー設定</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div><label>DR平均飛距離(y)</label><input type="number" v-model.number="player.driverDistance"></div>
+                        <div><label>持ち球 (球筋)</label>
+                            <select v-model="player.shotShape">
+                                <option value="Straight">ストレート</option><option value="Fade">フェード</option><option value="Draw">ドロー</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="bg-slate-800 p-4 rounded-2xl border border-slate-700 shadow-xl">
+                    <h2 class="text-emerald-400 text-[10px] font-black mb-4 uppercase tracking-widest">⛳️ ホール設定</h2>
+                    <div class="space-y-4 max-h-[55vh] overflow-y-auto pr-1">
+                        <div v-for="(h, idx) in holes" :key="idx" class="p-4 bg-slate-900 rounded-xl border border-slate-700">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xl font-black text-emerald-500 italic">#{{ idx + 1 }}</span>
+                                <div class="flex gap-2">
+                                    <div class="w-14"><label>PAR</label><select v-model="h.par"><option :value="3">3</option><option :value="4">4</option><option :value="5">5</option></select></div>
+                                    <div class="w-20"><label>距離(y)</label><input type="number" v-model.number="h.yardage" class="text-center"></div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 mb-4 border-t border-slate-800 pt-3">
+                                <div><label>↔︎ グリーン幅 (y)</label><input type="number" v-model.number="h.greenWidth"></div>
+                                <div><label>↕︎ 奥行 (y)</label><input type="number" v-model.number="h.greenDepth"></div>
+                            </div>
+                            <div class="bg-slate-800 p-3 rounded-lg space-y-3">
+                                <span class="text-[9px] text-emerald-400 font-black uppercase">今日のカップ位置 (ピンポジ)</span>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div><label>手前エッジ(y)</label><input type="number" v-model.number="h.pinFront"></div>
+                                    <div><label>左右エッジ(y)</label>
+                                        <div class="flex">
+                                            <input type="number" v-model.number="h.pinSideDist" class="rounded-r-none border-r-0" style="border-radius: 6px 0 0 6px !important;">
+                                            <div class="flex w-20">
+                                                <button @click="h.pinSide = 'L'" :class="{active: h.pinSide === 'L'}" class="toggle-btn rounded-none border-r-0">L</button>
+                                                <button @click="h.pinSide = 'R'" :class="{active: h.pinSide === 'R'}" class="toggle-btn rounded-r-md text-red-400">R</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <button v-if="!isRoundActive" @click="startRound" class="w-full bg-emerald-500 text-slate-950 font-black py-5 rounded-2xl shadow-xl active:scale-95 uppercase tracking-widest">Round Start</button>
+            </div>
+
+            <!-- 2. PLAY TAB -->
+            <div v-if="isRoundActive && currentTab === 'play'" class="space-y-6">
+                <div class="bg-slate-800 rounded-3xl p-5 border border-slate-700 shadow-2xl">
+                    <div class="flex justify-between items-center mb-6">
+                        <button @click="prevHole" :disabled="currentHoleIdx === 0" class="w-10 h-10 bg-slate-700 rounded-full flex items-center justify-center disabled:opacity-10 text-lg">◀︎</button>
+                        <div class="text-center">
+                            <span class="text-[10px] font-black text-slate-500 uppercase">Hole {{ currentHoleIdx + 1 }}</span>
+                            <h2 class="text-4xl font-black italic">Par {{ activeHole.par }}</h2>
+                        </div>
+                        <button @click="nextHole" :disabled="currentHoleIdx === 17" class="w-10 h-10 bg-slate-700 rounded-full flex items-center justify-center disabled:opacity-10 text-lg">▶︎</button>
+                    </div>
+                    <div class="flex flex-col items-center mb-6">
+                        <div class="green-base w-44 h-52 shadow-2xl">
+                            <div class="pin-marker" :style="pinVisualPosition"></div>
+                            <div class="absolute bottom-2 w-full text-center text-[8px] font-black text-emerald-300/30 uppercase tracking-widest">Front Edge</div>
+                        </div>
+                    </div>
+                    <div class="space-y-3 text-xs">
+                        <div class="p-3 rounded-xl font-black flex justify-between items-center" :class="lightStatusClass">
+                            <span>{{ lightStatusText }}</span>
+                            <span>{{ activeHole.pinSide }}{{ activeHole.pinSideDist }} / F{{ activeHole.pinFront }}</span>
+                        </div>
+                        <div class="bg-slate-950 p-4 rounded-2xl border-l-4 border-emerald-500 leading-relaxed shadow-inner">
+                            <span class="text-emerald-500 font-black uppercase block mb-1">Caddy Tip:</span>
+                            {{ strategyAdvice }}
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-800 rounded-3xl p-5 border border-slate-700 shadow-xl space-y-4">
+                    <div class="bg-slate-900 p-4 rounded-2xl border border-slate-700">
+                        <label>アプローチ地点の残り距離</label>
+                        <div class="flex items-center gap-3">
+                            <input type="number" v-model.number="activeHole.approachDistance" class="flex-1 text-2xl font-black text-center">
+                            <span class="text-xs font-bold text-slate-500 italic">yards</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-slate-900 p-3 rounded-2xl border border-slate-700 text-center">
+                            <label>Score</label>
+                            <div class="flex items-center justify-around">
+                                <button @click="activeHole.score--" class="w-8 h-8 bg-slate-700 rounded-full font-black">－</button>
+                                <span class="text-2xl font-black italic">{{ activeHole.score || activeHole.par }}</span>
+                                <button @click="activeHole.score++" class="w-8 h-8 bg-slate-700 rounded-full font-black">＋</button>
+                            </div>
+                        </div>
+                        <div class="bg-slate-900 p-3 rounded-2xl border border-slate-700 text-center">
+                            <label class="text-orange-400">Putts</label>
+                            <div class="flex items-center justify-around">
+                                <button @click="activeHole.putts--" class="w-8 h-8 bg-slate-700 rounded-full font-black text-orange-400">－</button>
+                                <span class="text-2xl font-black text-orange-400 italic">{{ activeHole.putts }}</span>
+                                <button @click="activeHole.putts++" class="w-8 h-8 bg-slate-700 rounded-full font-black text-orange-400">＋</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. STATS TAB -->
+            <div v-if="isRoundActive && currentTab === 'stats'" class="space-y-4 animate-in slide-in-from-right">
+                <div class="bg-slate-800 p-6 rounded-3xl border border-slate-700 shadow-2xl">
+                    <h3 class="text-xl font-black text-orange-500 italic mb-6 uppercase flex items-center gap-2">🔥 TIGER 5 TRACKER</h3>
+                    <div class="space-y-3">
+                        <div v-for="(val, label) in tigerStats" :key="label" class="flex justify-between items-center p-4 rounded-xl border border-slate-700 bg-slate-950">
+                            <span class="text-[10px] font-black text-slate-400 uppercase tracking-tight">{{ label }}</span>
+                            <span class="text-2xl font-black italic" :class="val > 0 ? 'text-red-500' : 'text-emerald-500'">{{ val }}</span>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-slate-700 flex justify-between items-end">
+                        <div><p class="text-[10px] text-slate-500 font-black">GROSS</p><p class="text-4xl font-black text-emerald-500 italic">{{ totalScore }}</p></div>
+                        <div class="text-right"><p class="text-[10px] text-slate-500 font-black">TO PAR</p><p class="text-2xl font-black italic" :class="totalRelative.includes('+') ? 'text-red-400' : 'text-emerald-400'">{{ totalRelative }}</p></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- UI loading fallback (強制非表示タイマー付き) -->
+    <div id="loading-screen" class="fixed inset-0 bg-slate-950 flex items-center justify-center z-[100]">
+        <div class="text-center font-black italic text-emerald-500 animate-pulse uppercase tracking-widest text-xs">Loading DECADE Pro...</div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script>
+        const { createApp, ref, computed, onMounted, watch } = Vue;
+
+        const app = createApp({
+            setup() {
+                const isRoundActive = ref(false);
+                const currentTab = ref('play');
+                const currentHoleIdx = ref(0);
+                const player = ref({ driverDistance: 240, shotShape: 'Straight' });
+
+                const holes = ref(Array.from({length: 18}, () => ({
+                    par: 4, yardage: 380, approachDistance: 150,
+                    greenWidth: 30, greenDepth: 35,
+                    pinFront: 15, pinSideDist: 10, pinSide: 'R',
+                    score: 0, putts: 2, chips: 0
+                })));
+
+                const activeHole = computed(() => holes.value[currentHoleIdx.value]);
+
+                const lightStatus = computed(() => {
+                    const h = activeHole.value;
+                    const backDist = h.greenDepth - h.pinFront;
+                    const oppSide = h.greenWidth - h.pinSideDist;
+                    if (h.pinFront < 7 || backDist < 7 || h.pinSideDist < 7 || oppSide < 7) return 'RED';
+                    if (h.pinFront < 10 || backDist < 10 || h.pinSideDist < 10) return 'YELLOW';
+                    return 'GREEN';
+                });
+
+                const lightStatusText = computed(() => {
+                    const s = lightStatus.value;
+                    if(s === 'RED') return '🔴 RED: CENTER ONLY';
+                    if(s === 'YELLOW') return '🟡 YELLOW: WIDE SIDE';
+                    return '🟢 GREEN: ATTACK PIN';
+                });
+
+                const lightStatusClass = computed(() => `light-status-${lightStatus.value.toLowerCase()}`);
+
+                const strategyAdvice = computed(() => {
+                    const h = activeHole.value;
+                    const s = lightStatus.value;
+                    let m = s === 'RED' ? "ピン位置が危険です。グリーンの中心だけを狙ってください。" : 
+                            s === 'YELLOW' ? `ピンの${h.pinSide === 'L' ? '右' : '左'}側（広い方）を狙ってください。` : 
+                            "安全な位置です。積極的に狙いましょう。";
+                    if (player.value.shotShape === 'Fade') m += " フェード気味に左から回すと安全です。";
+                    if (player.value.shotShape === 'Draw') m += " ドロー気味に右から回すと安全です。";
+                    return m;
+                });
+
+                const pinVisualPosition = computed(() => {
+                    const h = activeHole.value;
+                    const bottom = (h.pinFront / h.greenDepth) * 100;
+                    let left = h.pinSide === 'L' ? (h.pinSideDist / h.greenWidth) * 100 : 100 - ((h.pinSideDist / h.greenWidth) * 100);
+                    return { bottom: `${bottom}%`, left: `${left}%` };
+                });
+
+                const tigerStats = computed(() => {
+                    const s = { '3パット': 0, 'ダボ以上': 0, 'P5ボギー以上': 0, '150y以内ボギー': 0, 'チップミス': 0 };
+                    holes.value.forEach(h => {
+                        const score = h.score || h.par;
+                        if (h.putts >= 3) s['3パット']++;
+                        if (score - h.par >= 2) s['ダボ以上']++;
+                        if (h.par === 5 && score > 5) s['P5ボギー以上']++;
+                        if (h.approachDistance <= 150 && score > h.par) s['150y以内ボギー']++;
+                        if (h.chips >= 2) s['チップミス']++;
+                    });
+                    return s;
+                });
+
+                const totalScore = computed(() => holes.value.reduce((acc, h) => acc + (h.score || h.par), 0));
+                const totalRelative = computed(() => {
+                    const diff = totalScore.value - holes.value.reduce((acc, h) => acc + h.par, 0);
+                    return diff === 0 ? 'E' : (diff > 0 ? '+' + diff : diff.toString());
+                });
+
+                const startRound = () => {
+                    holes.value.forEach(h => { if (h.par === 3) h.approachDistance = h.yardage; });
+                    isRoundActive.value = true; currentTab.value = 'play';
+                };
+                const prevHole = () => { if (currentHoleIdx.value > 0) currentHoleIdx.value--; };
+                const nextHole = () => { if (currentHoleIdx.value < 17) currentHoleIdx.value++; };
+                const resetRound = () => { if (confirm("終了しますか？")) { localStorage.removeItem('decade_v_final'); location.reload(); } };
+
+                onMounted(() => {
+                    const loading = document.getElementById('loading-screen');
+                    if (loading) loading.style.display = 'none';
+                    const stored = localStorage.getItem('decade_v_final');
+                    if (stored) {
+                        try {
+                            const d = JSON.parse(stored);
+                            player.value = d.player || player.value;
+                            holes.value = d.holes || holes.value;
+                            currentHoleIdx.value = d.currentHoleIdx || 0;
+                            isRoundActive.value = d.isRoundActive || false;
+                        } catch(e) {}
+                    }
+                });
+
+                watch([player, holes, currentHoleIdx, isRoundActive], () => {
+                    localStorage.setItem('decade_v_final', JSON.stringify({
+                        player: player.value, holes: holes.value, currentHoleIdx: currentHoleIdx.value, isRoundActive: isRoundActive.value
+                    }));
+                }, { deep: true });
+
+                return {
+                    isRoundActive, currentTab, currentHoleIdx, player, holes, activeHole,
+                    lightStatusText, lightStatusClass, strategyAdvice, pinVisualPosition,
+                    tigerStats, totalScore, totalRelative, startRound, prevHole, nextHole, resetRound
+                };
+            }
+        });
+
+        // 5秒経っても消えない場合の強制処理
+        setTimeout(() => {
+            const ls = document.getElementById('loading-screen');
+            if (ls) ls.style.display = 'none';
+        }, 5000);
+
+        app.mount('#app');
+    </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'decade-v13';
+const CACHE_NAME = 'decade-v15';
 self.addEventListener('install', e => {
   self.skipWaiting();
   e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(['./index.html', './manifest.json', './icon.svg'])));
